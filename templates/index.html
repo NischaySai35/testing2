@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+{% block content %}
+<section class="hero">
+  <p class="eyebrow">Small-batch coffee &middot; Fresh bakes</p>
+  <h1>Your neighbourhood cafe,<br><span>brewed with care.</span></h1>
+  <p class="lead">Single-origin beans, slow-simmered chai and pastries baked before sunrise.</p>
+  <p><a class="btn" href="{{ url_for('menu') }}">See the menu</a>
+     <a class="btn ghost" href="{{ url_for('contact') }}">Book a table</a></p>
+</section>
+<section>
+  <h2>Today's favourites</h2>
+  <div class="grid">
+    {% for m in featured %}
+    <article class="card">
+      <span class="tag">{{ m.tag }}</span>
+      <h3>{{ m.name }}</h3>
+      <p>{{ m.desc }}</p>
+      <strong>${{ "%.2f"|format(m.price) }}</strong>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

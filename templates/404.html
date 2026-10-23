@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Not found{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>Page not found</h1>
+  <p class="lead">That page has gone for a coffee break.</p>
+  <p><a class="btn" href="{{ url_for('home') }}">Back to home</a></p>
+</section>
+{% endblock %}

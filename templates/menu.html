@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Menu{% endblock %}
+{% block content %}
+<h1>Our menu</h1>
+<p class="filters">
+  <a class="{{ '' if tag else 'on' }}" href="{{ url_for('menu') }}">All</a>
+  {% for t in tags %}<a class="{{ 'on' if t == tag else '' }}" href="{{ url_for('menu', tag=t) }}">{{ t }}</a>{% endfor %}
+</p>
+<div class="grid">
+  {% for m in items %}
+  <article class="card">
+    <span class="tag">{{ m.tag }}</span>
+    <h3>{{ m.name }}</h3>
+    <p>{{ m.desc }}</p>
+    <strong>${{ "%.2f"|format(m.price) }}</strong>
+  </article>
+  {% else %}
+  <p>Nothing here yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}
